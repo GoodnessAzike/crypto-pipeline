@@ -9,8 +9,9 @@ CoinGecko API  ──►  extract.py  ──►  load.py  ──►  Postgres (c
                     (Python, run in Docker; Postgres in a second container)
 ```
 
-- **Extract:** calls CoinGecko's `/coins/markets` endpoint for a set of coins.
+- **Extract:** calls CoinGecko's `/coins/markets` for the top 10 coins by markets cap, priced in USD.
 - **Load:** inserts each coin's price into `coin_prices`, with CoinGecko's own `last_updated` time as `source_updated_at`.
+- **Latest price:** `coin_prices_current` (a view) shows the most recent price for each coin.
 - **Safe to rerun:** `coin_prices` has a unique key on `(coin_id, source_updated_at)`, and inserts use `ON CONFLICT DO NOTHING`. Running twice in a row adds nothing new, and a later run adds only prices CoinGecko has updated since.
 
 ## Run it
