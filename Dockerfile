@@ -2,5 +2,6 @@ FROM python:3.12-slim
 WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
-COPY extract.py load.py raw.py ./
+COPY extract.py load.py raw.py migrate.py ./
+COPY migrations/ migrations/
 CMD ["python", "load.py"]

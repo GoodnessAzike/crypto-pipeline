@@ -1,4 +1,4 @@
-CREATE TABLE coin_prices (
+CREATE TABLE IF NOT EXISTS coin_prices (
     coin_id            TEXT NOT NULL,
     symbol             TEXT,
     name               TEXT,
@@ -9,7 +9,7 @@ CREATE TABLE coin_prices (
     UNIQUE (coin_id, source_updated_at)
 );
 
-CREATE VIEW coin_prices_current AS
+CREATE OR REPLACE VIEW coin_prices_current AS
 SELECT DISTINCT ON (coin_id)
     coin_id, symbol, name, price_usd, market_cap, source_updated_at
 FROM coin_prices
