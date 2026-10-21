@@ -3,3 +3,4 @@ __pycacache__/
 *.pyc 
 .env
 .DS_Store
+raw/
