@@ -53,8 +53,3 @@ The goal is to answer a question: **can you trust one free source for a crypto p
 ## Notes
 
 The Postgres password in `compose.yaml` is for a database on your laptop only. Real secrets (API keys, cloud database passwords) never go in this repo.
-
-Check before committing:
-- Does your extract call /coins/markets?
-- Are coin_id and source_updated_at your real column names?
-- Does it print "new rows" and "skipped"? Your output says it does.
